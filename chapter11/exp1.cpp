@@ -50,3 +50,58 @@ Time operator*(double mult, const Time &t)
 {
     return (t*mult);
 }
+
+
+// vector
+#include <cmath>
+
+namespace VECTOR{
+
+    Vector::Vector(){}
+    Vector::Vector(double x, double y, char mode):
+        x_(x),
+        y_(y),
+        mode_(mode)
+    {
+        std::cout<<"vector constructed!"<<std::endl;
+    }
+
+    void Vector::set(double x, double y, char mode)
+    {
+        x_ = x;
+        y_ = y;
+        mode_ = mode;
+    }
+
+    double Vector::get_mgt() const{ return std::sqrt(x_*x_ + y_*y_); }
+    double Vector::get_ang() const
+    {
+        if(x_ == 0 || y_ == 0) return 0;
+        else return std::atan2(y_,x_);
+    }
+
+    Vector Vector::operator+(const Vector &t) const{ return Vector(x_+t.x_, y_+t.y_); }
+    Vector Vector::operator-(const Vector &t) const{ return Vector(x_-t.x_, y_-t.y_); }
+    Vector Vector::operator-() const{ return Vector(-x_,-y_); }
+    Vector Vector::operator*(double scale) const{ return Vector(x_*scale, y_*scale); }
+
+    Vector operator*(double scale, const Vector &t)
+    {
+        return Vector(t.x_*scale, t.y_*scale);
+    }
+
+    std::ostream& operator<<(std::ostream &os, const Vector &t)
+    {
+        //os<<t.x_<<" "<<t.y_<<std::endl;
+        os<<t.get_mode()<<" "<<t.get_mgt()<<" "<<t.get_ang()<<std::endl;
+        return os;
+    }
+
+    /*
+    std::ostream& operator<<(std::ostream &os, const Vector &t)
+    {
+        os<<t.get_mode()<<" "<<t.get_mgt()<<" "<<t.get_ang()<<std::endl;
+        return os;
+    }
+    */
+}
