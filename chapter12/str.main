@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cstring>
+#include <ctime>
 #include "str.hpp"
+#include "queue.hpp"
 
 using std::cout;
 using std::endl;
@@ -32,3 +34,4 @@ int main(int argc, char *argv[])
 
     return 0;
 }
+
