@@ -13,7 +13,7 @@ class Customer
     private:
         enum {
             MAX_TM = 100,
-            MAX_PTM = 10
+            MAX_PTM = 5
         };
         long arrive_;
         int ptm_;

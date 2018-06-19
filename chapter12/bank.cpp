@@ -39,6 +39,7 @@ int main(int argc, char *argv[])
     long sum_line = 0;
     long wait_time = 0;
     long line_wait = 0;
+    int idle = 1;
 
     for(int cycle=0; cycle<cyclelimit; cycle++)
     {
@@ -48,6 +49,7 @@ int main(int argc, char *argv[])
                 temp.set(cycle);
                 line.EnQueue(temp);
                 customers++;
+                idle = 0;
             }
             else{
                 turnaways++;
@@ -57,12 +59,17 @@ int main(int argc, char *argv[])
         if(wait_time<=0 && !line.IsEmpty()){
             line.DeQueue(temp);
             while((cycle-temp.when()) > temp.mtime()){
-                line.DeQueue(temp);
                 leaves++;
+                if(!line.DeQueue(temp)){
+                    idle = 1;
+                    break;
+                }
             }
-            wait_time = temp.ptime();
-            line_wait += cycle-temp.when();
-            served++;
+            if(!idle){
+                wait_time = temp.ptime();
+                line_wait += cycle-temp.when();
+                served++;
+            }
         }
         // waiting
         if(wait_time>0) wait_time--;
