@@ -1,0 +1,33 @@
+#include <iostream>
+
+class A
+{
+    public:
+        virtual void test() = 0;
+        void haha(){std::cout<<"in A::haha\n";};
+    private:
+        int num;
+};
+void A::test(){std::cout<<"in A::test\n";}
+
+class B: public A
+{
+    public:
+        virtual void test(){std::cout<<"in B::test\n";}
+        //virtual void haha(){std::cout<<"in B::haha\n";}
+};
+
+int main()
+{
+    A *ptr = new B;
+    ptr->test();
+    ptr->haha();
+
+    B xixi;
+    A & hehe = xixi;
+    hehe.test();
+    hehe.haha();
+
+    //A obj;
+    //obj.haha();
+}

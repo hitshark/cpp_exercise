@@ -1,0 +1,49 @@
+#include <iostream>
+
+class A
+{
+    public:
+        A(int nm){nm_ = nm;}
+        A &operator=(const A & t){
+            std::cout<<"in A::operator=\n";
+            nm_ = t.nm_;
+            return *this;
+        }
+        int get_nm() const{return nm_;}
+        virtual void display() const {std::cout<<"nm_ = "<<nm_<<std::endl;}
+    private:
+        int nm_;
+};
+
+class B: public A
+{
+    public:
+        B(int nm, int sc):A(nm){score_ = sc;}
+        /*
+        B &operator=(const B & t){
+            std::cout<<"in B::operator=\n";
+            A::operator=(t);
+            score_ = t.score_;
+            return *this;
+        }
+        */
+        int get_score() const {return score_;}
+        virtual void display() const {
+            std::cout<<"nm_ = "<<get_nm()<<std::endl;
+            std::cout<<"score_ = "<<score_<<std::endl;
+        }
+    private:
+        int score_;
+};
+
+int main()
+{
+    B a(1,1);
+    B b(2,2);
+    A c(3);
+    a.display();
+    a = b;
+    a.display();
+    c = a;
+    c.display();
+}
