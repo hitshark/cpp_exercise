@@ -1,0 +1,31 @@
+#include <iostream>
+
+class A
+{
+    public:
+        void display() const {std::cout<<"in A::display()\n";}
+        virtual void View() const {std::cout<<"in A\n";}
+};
+
+class B : public A
+{
+    public:
+        void display(const char *st) const {std::cout<<st<<std::endl;}
+        void View(const char * st) const {std::cout<<st<<std::endl;}
+};
+
+int main()
+{
+    A a;
+    B b;
+    A *p = &a;
+    p->View();
+    p = &b;
+    p->View();
+    //p->View("hehe");
+    //p->View("xixi");
+    //b.View();
+    b.View("xixi");
+
+    return 0;
+}
