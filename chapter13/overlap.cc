@@ -11,21 +11,21 @@ class B : public A
 {
     public:
         void display(const char *st) const {std::cout<<st<<std::endl;}
+        //void View() const {std::cout<<"in B\n";}
         void View(const char * st) const {std::cout<<st<<std::endl;}
 };
 
+/*
 int main()
 {
-    A a;
     B b;
-    A *p = &a;
-    p->View();
-    p = &b;
+    B *p = &b;
+    b.View();
     p->View();
     //p->View("hehe");
     //p->View("xixi");
     //b.View();
-    b.View("xixi");
 
     return 0;
 }
+*/
