@@ -1,4 +1,6 @@
 #include <iostream>
+#include <iterator>
+#include <vector>
 
 class A {
     private:
@@ -32,6 +34,14 @@ int main()
     //std::cout<<a.get(0)<<std::endl;
     std::cout<<a[0]<<std::endl;
     std::cout<<a.getLength()<<std::endl;
+
+    std::vector<int> vec{1,2,3};
+    const std::vector<int>::iterator iter = vec.begin();
+    *iter = 10;
+    iter++;
+    std::vector<int>::const_iterator cIter = vec.begin();
+    *cIter = 11;
+    ++cIter;
 
     return 0;
 }
