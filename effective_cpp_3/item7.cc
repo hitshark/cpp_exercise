@@ -3,8 +3,8 @@
 class VirtualDestructor {
     public:
         VirtualDestructor(uint32_t age_ = 10, uint32_t score_ = 0) : age(age_), score(score_) {}
-        //virtual ~VirtualDestructor(){}
-        ~VirtualDestructor(){}
+        virtual ~VirtualDestructor(){}
+        //~VirtualDestructor(){}
     private:
         uint32_t age;
         uint32_t score;
