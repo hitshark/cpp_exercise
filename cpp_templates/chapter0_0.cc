@@ -35,6 +35,7 @@ int main()
     std::cout << *b << std::endl;
     */
 
+    /*
     Base* pa = new Derived("derived");
     pa->logOut();
     //pa->testPrint();
@@ -42,6 +43,16 @@ int main()
     std::shared_ptr<Base> pb = static_cast<std::shared_ptr<Base> >(
             std::make_shared<Derived>("haha"));
     pb->logOut();
+    */
+
+    int a = 12;
+    int& b = a;
+    auto c = b;
+    auto d = a;
+    std::cout << &a << std::endl;
+    std::cout << &b << std::endl;
+    std::cout << &c << std::endl;
+    std::cout << &d << std::endl;
 
     return 0;
 }

@@ -9,6 +9,15 @@ typename std::common_type<T1, T2>::type max(T1 a,  T2 b) {
     return a < b ? b : a;
 }
 
+/*
+template <typename T1, typename T2, typename RT = typename std::decay<decltype(true ? T1() : T2())>::type>
+//template <typename T1, typename T2, typename RT = std::decay_t<decltype(true ? T1() : T2())>>
+//template <typename T1, typename T2, typename RT = typename std::common_type<T1, T2>::type>
+RT max(T1 a, T2 b) {
+    return b < a ? a : b;
+}
+*/
+
 const int& min(const int& a, const int& b) {
     const int& rlt = a > b ? a : b;
     return rlt;
